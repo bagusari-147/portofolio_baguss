@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portofolio Bagus | Contact</title>
+
+  <!-- Bootstrap & AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0369b6;
+      --secondary-color: #0ea5e9;
+      --accent-color: #38bdf8;
+      --dark-color: #0c4a6e;
+      --light-color: #f0f9ff;
+      --text-color: #1e3a8a;
+      --text-light: #64748b;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: rgba(3, 105, 182, 0.9) !important;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.5s ease;
+      box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar.scrolled {
+      background-color: var(--primary-color) !important;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .navbar-brand {
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+      transform: translateY(-2px);
+    }
+
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: white;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Contact Section */
+    #contact {
+      padding-top: 90px;
+      padding-bottom: 50px;
+      background: linear-gradient(135deg, #e0f2ff 0%, #ffffff 100%);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--dark-color);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+      border-radius: 3px;
+    }
+
+    /* Contact Card */
+    .contact-card {
+      max-width: 600px;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(3, 105, 182, 0.1);
+      padding: 30px;
+      margin: 0 auto;
+      transition: all 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(3, 105, 182, 0.2);
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 10px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-info:hover {
+      background-color: var(--light-color);
+    }
+
+    .contact-info i {
+      font-size: 1.5rem;
+      margin-right: 15px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: white;
+    }
+
+    .contact-info .bi-envelope-fill { background-color: var(--primary-color); }
+    .contact-info .bi-phone-fill { background-color: #25D366; }
+    .contact-info .bi-geo-alt-fill { background-color: #F44336; }
+
+    /* Social Icons */
+    .social-icons {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .social-item {
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .social-item a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .icon-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon-circle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .icon-circle i {
+      font-size: 2rem;
+      color: #fff;
+    }
+
+    .ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+    .wa { background-color: #25D366; }
+    .tt { background-color: #000000; }
+
+    .username {
+      margin-top: 10px;
+      font-weight: 500;
+      color: var(--text-color);
+      font-size: 0.95rem;
+    }
+
+     /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+      color: white;
+      padding: 2rem 0;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+    }
+
+    footer p {
+      margin: 0;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: var(--accent-color);
+      transform: translateY(-5px) scale(1.1);
+    }
+
+    /* Media Queries */
+    @media (max-width: 767px) {
+      .contact-card {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .contact-info i {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+      
+      .social-icons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <i class="bi bi-code-slash me-2"></i> Portofolio bagz
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="bi bi-house-door me-1"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">
+            <i class="bi bi-person me-1"></i> About
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="skill.html">
+            <i class="bi bi-laptop me-1"></i> Skills
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="contact.html">
+            <i class="bi bi-envelope me-1"></i> Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Contact Section -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header" data-aos="fade-down">
+      <h2>Contact Me</h2>
+    </div>
+    
+    <div class="contact-card" data-aos="fade-up">
+      <div class="contact-info" data-aos="fade-right" data-aos-delay="100">
+        <i class="bi bi-envelope-fill"></i>
+        <div>
+          <h5>Email</h5>
+          <p>bagusari147@gmail.com</p>
+        </div>
+      </div>
+      
+      <div class="contact-info" data-aos="fade-right" data-aos-delay="200">
+        <i class="bi bi-phone-fill"></i>
+        <div>
+          <h5>Phone</h5>
+          <p>087878032204</p>
+        </div>
+      </div>
+      
+      <div class="contact-info" data-aos="fade-right" data-aos-delay="300">
+        <i class="bi bi-geo-alt-fill"></i>
+        <div>
+          <h5>Location</h5>
+          <p>Kota Banjar, Indonesia</p>
+        </div>
+      </div>
+      
+      <!-- Social Media -->
+      <div class="social-icons">
+        <div class="social-item" data-aos="zoom-in" data-aos-delay="400">
+          <a href="https://www.instagram.com/baa_guzzz?igsh=MWc0Ymw3eWg2MmFseA==" target="_blank">
+            <div class="icon-circle ig">
+              <i class="bi bi-instagram"></i>
+            </div>
+            <div class="username">@baa_guzz</div>
+          </a>
+        </div>
+        
+        <div class="social-item" data-aos="zoom-in" data-aos-delay="500">
+          <a href="https://wa.me/qr/ZMANOPFDYZWJB1" target="_blank">
+            <div class="icon-circle wa">
+              <i class="bi bi-whatsapp"></i>
+            </div>
+            <div class="username">+6287878032204</div>
+          </a>
+        </div>
+        
+        <div class="social-item" data-aos="zoom-in" data-aos-delay="600">
+          <a href="https://www.tiktok.com/@iam_good1?_t=ZS-8wQYphwP3qs&_r=1" target="_blank">
+            <div class="icon-circle tt">
+              <i class="bi bi-tiktok"></i>
+            </div>
+            <div class="username">@bagus_good</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+  <footer class="text-center py-4">
+    <div class="container">
+      <div class="social-icons">
+        <a href="#" class="bi bi-github" data-aos="fade-up" data-aos-delay="100"></a>
+        <a href="#" class="bi bi-linkedin" data-aos="fade-up" data-aos-delay="200"></a>
+        <a href="#" class="bi bi-instagram" data-aos="fade-up" data-aos-delay="300"></a>
+        <a href="#" class="bi bi-twitter" data-aos="fade-up" data-aos-delay="400"></a>
+        <a href="#" class="bi bi-facebook" data-aos="fade-up" data-aos-delay="500"></a>
+      </div>
+      <p class="mt-4" data-aos="fade-up" data-aos-delay="600">
+        © 2025 Bagus Ari Prasaja. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  // Initialize AOS
+  AOS.init({
+    once: true,
+    duration: 800,
+  });
+  
+  // Navbar scroll effect
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+</script>
+</body>
+</html>
